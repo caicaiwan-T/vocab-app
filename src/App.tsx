@@ -15,7 +15,7 @@ export default function App() {
   const [activeDeckId, setActiveDeckId] = useState(allDecks[0].id)
   const [mode, setMode] = useState<AppMode>('browse')
   const [activeCategories, setActiveCategories] = useState<Set<Category>>(new Set(ALL_CATEGORIES))
-  const [showHidden, setShowHidden] = useState(false)
+  const [, setShowHidden] = useState(false)
 
   const deck = useMemo(() => allDecks.find(d => d.id === activeDeckId)!, [activeDeckId])
   const { knownMap, toggle } = useProgress(activeDeckId)
@@ -118,7 +118,6 @@ export default function App() {
           <QuizMode
             key={`${activeDeckId}-${[...activeCategories].sort().join()}`}
             items={filteredItems}
-            knownMap={knownMap}
             onToggleKnown={toggle}
           />
         )}

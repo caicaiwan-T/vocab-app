@@ -7,7 +7,6 @@ import { CATEGORY_META } from './categoryMeta'
 interface Props {
   items: VocabItem[]
   onToggleKnown: (id: string) => void
-  knownMap: Record<string, boolean>
 }
 
 interface Question {
@@ -44,7 +43,7 @@ function buildQuestions(items: VocabItem[]): Question[] {
   })
 }
 
-export function QuizMode({ items, onToggleKnown, knownMap }: Props) {
+export function QuizMode({ items, onToggleKnown }: Props) {
   const [questions, setQuestions] = useState<Question[]>(() => buildQuestions(items))
   const [qIndex, setQIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
